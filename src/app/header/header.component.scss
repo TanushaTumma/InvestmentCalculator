@@ -1,0 +1,41 @@
+
+  /* Header container */
+  .app-header {
+    min-height: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    padding-top: 32px;
+    padding-bottom: 20px;
+  
+    text-align: center;
+  }
+  
+  /* Header icon */
+  .app-header img {
+    width: 170px;
+    height: auto;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6));
+  }
+  
+  /* Header title */
+  .app-header h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #e8fff6;
+    letter-spacing: 0.03em;
+    opacity: 0.95;
+  }
+  
+  /* Calculator container spacing */
+  .calculator-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  
