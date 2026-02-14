@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CalculateComponent } from "./calculate/calculate.component";
 import { HeaderComponent } from "./header/header.component";
@@ -12,9 +12,5 @@ import { InvestmentListComponent } from "./investment-list/investment-list.compo
 })
 export class AppComponent {
   title = 'InvestmentCalculator';
-  investmentResults = false;
 
-  onSubmitInvestment(){
-    this.investmentResults = true;
-  }
 }

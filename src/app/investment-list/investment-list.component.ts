@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { InvestmentYear } from '../../investment.model';
 import { InvestmentCalculatorSevice } from '../../InvestmentCalculator.service';
 
@@ -10,13 +10,14 @@ import { InvestmentCalculatorSevice } from '../../InvestmentCalculator.service';
 })
 export class InvestmentListComponent {
   
-  investmentResults : InvestmentYear [] =[];
-  constructor(private investmentCalculatorSevice : InvestmentCalculatorSevice) {}
+  private investmentCalculatorSevice = inject(InvestmentCalculatorSevice);
+
+  // get results() {
+  //   return this.investmentCalculatorSevice.investmentResults;
+  // }
+  // results = computed(() => this.investmentCalculatorSevice.investmentResults());
+
+  results = this.investmentCalculatorSevice.investmentResults.asReadonly();  
 
 
-  ngOnInit() {
-    this.investmentResults = [];
-    this.investmentResults = this.investmentCalculatorSevice.getInvestmentList();
-    console.log(this.investmentResults);
-  }
 }

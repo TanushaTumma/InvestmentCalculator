@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { Investment, InvestmentYear } from "./investment.model";
 
 @Injectable({providedIn: 'root'})
@@ -6,10 +6,11 @@ export class InvestmentCalculatorSevice {
 
     constructor() {}
 
-    investmentResults: InvestmentYear[] = [];
+    // investmentResults: InvestmentYear[] = [];
+    investmentResults  =signal<InvestmentYear[] | undefined>(undefined);
     
     calculateInvestment( investment : Investment ) {
-        // const InvestmentResults = [];
+        const results = [];
         let currentValue = investment.initialInvestment;
         let totalInterest = 0;
         let investedCapital = investment.initialInvestment;
@@ -24,7 +25,7 @@ export class InvestmentCalculatorSevice {
           totalInterest += interest;
           currentValue += interest;
       
-          this.investmentResults.push({
+          results.push({
             year,
             investmentValue: this.round(currentValue),
             interest: this.round(interest),
@@ -32,16 +33,12 @@ export class InvestmentCalculatorSevice {
             investedCapital: this.round(investedCapital)
           });
         }
+        this.investmentResults.set(results);
         console.log(this.investmentResults);
-        return this.investmentResults;
     }
 
     round(value: number): number {
         return Math.round(value * 100) / 100;
-    }  
-
-    getInvestmentList() {
-      return this.investmentResults;
     }
       
 

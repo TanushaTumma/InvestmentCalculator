@@ -1,25 +1,28 @@
-<div class="table-wrapper">
-    <table class="investment-table">
-      <thead>
-        <tr>
-          <th>Year</th>
-          <th>Investment Value</th>
-          <th>Interest (Year)</th>
-          <th>Total Interest</th>
-          <th>Invested Capital</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(investment of investmentResults; track investment.year) {
+@if (!results()) {
+    <p>Please provide investment details and calculate investment Returns</p>
+} @else {  
+    <div class="table-wrapper">
+        <table class="investment-table">
+        <thead>
             <tr>
-                <td>{{ investment.year }}</td>
-                <td>{{ investment.investmentValue }}</td>
-                <td>{{ investment.interest }}</td>
-                <td>{{ investment.totalInterest }}</td>
-                <td>{{ investment.investedCapital }}</td>
+            <th>Year</th>
+            <th>Investment Value</th>
+            <th>Interest (Year)</th>
+            <th>Total Interest</th>
+            <th>Invested Capital</th>
             </tr>
-        }
-      </tbody>
-    </table>
-  </div>
-  
+        </thead>
+        <tbody>
+            @for(investment of results(); track investment.year) {
+                <tr>
+                    <td>{{ investment.year }}</td>
+                    <td>{{ investment.investmentValue }}</td>
+                    <td>{{ investment.interest }}</td>
+                    <td>{{ investment.totalInterest }}</td>
+                    <td>{{ investment.investedCapital }}</td>
+                </tr>
+            }
+        </tbody>
+        </table>
+    </div>
+}

@@ -1,8 +1,3 @@
-
 <app-header />
-<app-calculate (submitInvestment)="onSubmitInvestment()" />
-@if (investmentResults) {
-    <app-investment-list />
-} @else {
-    <p id="fallback">Provide investment details</p>
-}
+<app-calculate />
+<app-investment-list />
